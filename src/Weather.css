@@ -1,3 +1,8 @@
+:root {
+  --second-color: #f9f7fe;
+  --main-color: #885df1;
+}
+
 .Weather {
-  color: red;
+  border: 1px solid #dedede;
 }
