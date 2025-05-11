@@ -1,9 +1,26 @@
 import "./Weather.css";
+import axios from "axios";
 
-export default function Weather() {
+export default function Weather(props) {
+  function refreshWeather(response) {
+    console.log(response.data);
+    alert(response.data.temperature.current);
+  }
+
+  function searchSity(city) {
+    let apikey = "dboef2d023e8b54bffat4b762d81356c";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}`;
+    axios.get(apiUrl).then(refreshWeather);
+  }
+
+  function requestWeather(event) {
+    event.preventDefault();
+    searchSity(props.city);
+  }
+
   return (
     <div className="Weather">
-      <form>
+      <form onSubmit={requestWeather}>
         <div className="row">
           <div className="col-9">
             <input
