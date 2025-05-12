@@ -1,16 +1,25 @@
 import { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
+import CorrectDate from "./CorrectDate";
 
 export default function Weather() {
   //debugger;
 
-  const [temperature, setTemperature] = useState({ ready: false });
+  const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("Kyiv");
 
   function refreshWeather(response) {
-    console.log(response.data.temperature.current);
-    setTemperature({ ready: true, temp: response.data.temperature.current });
+    console.log(response.data);
+    setWeatherData({
+      ready: true,
+      temp: response.data.temperature.current,
+      city: response.data.city,
+      date: response.data.time,
+      description: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+    });
   }
 
   function searchWeather() {
@@ -24,7 +33,7 @@ export default function Weather() {
     searchWeather();
   }
 
-  if (temperature.ready) {
+  if (weatherData.ready) {
     return (
       <div className="Weather">
         <form onSubmit={search}>
@@ -49,26 +58,27 @@ export default function Weather() {
           </div>
         </form>
 
-        <h1>LvivLvivLviv</h1>
+        <h1>{weatherData.city}</h1>
         <ul>
-          <li>Tuesday 10:00</li>
-          <li>Fog</li>
+          <li>
+            <CorrectDate date={weatherData.date} />
+          </li>
+          <li className="text-capitalize">{weatherData.description}</li>
         </ul>
 
-        <div className="row">
+        <div className="row mt-3">
           <div className="col-7 d-flex">
             <img
               src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
               alt="icon weather"
             />
-            <div className="temperature">{temperature.temp}</div>
+            <div className="temperature">{Math.round(weatherData.temp)}</div>
             <div className="unit">°C</div>
           </div>
           <div className="col-5">
             <ul>
-              <li> Precipitation: 13%</li>
-              <li> Humidity: 72%</li>
-              <li> Wind: 19 km/h</li>
+              <li> Humidity: {weatherData.humidity}%</li>
+              <li> Wind: {weatherData.wind} km/h</li>
             </ul>
           </div>
         </div>
