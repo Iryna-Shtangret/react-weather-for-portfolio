@@ -3,11 +3,11 @@ import "./Weather.css";
 import axios from "axios";
 import CorrectDate from "./CorrectDate";
 
-export default function Weather() {
+export default function Weather(props) {
   //debugger;
 
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState("Kyiv");
+  const [newCity, setNewCity] = useState(props.city);
 
   function refreshWeather(response) {
     console.log(response.data);
@@ -23,14 +23,18 @@ export default function Weather() {
   }
 
   function searchWeather() {
-    let apikey = "dboef2d023e8b54bffat4b762d81356c";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}`;
+    const apiKey = "dboef2d023e8b54bffat4b762d81356c";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${newCity}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(refreshWeather);
   }
 
   function search(event) {
     event.preventDefault();
     searchWeather();
+  }
+
+  function handleChange(event) {
+    setNewCity(event.target.value);
   }
 
   if (weatherData.ready) {
@@ -44,6 +48,7 @@ export default function Weather() {
                 placeholder="Enter a sity.."
                 className="inputSearch w-100"
                 name="inputFild"
+                onChange={handleChange}
                 autoFocus
               />
             </div>
