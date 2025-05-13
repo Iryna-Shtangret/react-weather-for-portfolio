@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
 import CorrectDate from "./CorrectDate";
+import ForecastWeather from "./ForecastWeather";
 
 export default function Weather(props) {
   //debugger;
@@ -10,7 +11,7 @@ export default function Weather(props) {
   const [newCity, setNewCity] = useState(props.city);
 
   function refreshWeather(response) {
-    console.log(response.data);
+    console.log(response);
     setWeatherData({
       ready: true,
       temp: response.data.temperature.current,
@@ -87,48 +88,7 @@ export default function Weather(props) {
             </ul>
           </div>
         </div>
-        <div className="forecast d-flex justify-content-between">
-          <div className="text-center">
-            <div>Mon</div>
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="icon forecast"
-            />
-            <div>25°C 18°C</div>
-          </div>
-          <div className="text-center">
-            <div>Mon</div>
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="icon forecast"
-            />
-            <div>25°C 18°C</div>
-          </div>
-          <div className="text-center">
-            <div>Mon</div>
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="icon forecast"
-            />
-            <div>25°C 18°C</div>
-          </div>
-          <div className="text-center">
-            <div>Mon</div>
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="icon forecast"
-            />
-            <div>25°C 18°C</div>
-          </div>
-          <div className="text-center">
-            <div>Mon</div>
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="icon forecast"
-            />
-            <div>25°C 18°C</div>
-          </div>
-        </div>
+        <ForecastWeather />
       </div>
     );
   } else {
