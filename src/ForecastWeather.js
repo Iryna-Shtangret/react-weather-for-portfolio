@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import DayForecast from "./DayForecast";
 import axios from "axios";
 
 export default function ForecastWeather(props) {
   const [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
 
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
 
   function refreshForecast(response) {
     console.log(response.data.daily);
@@ -25,11 +28,13 @@ export default function ForecastWeather(props) {
     return (
       <div className="ForecastWeather">
         <div className="forecast d-flex justify-content-between">
-          {days.map(function (day, index) {
+          {forecast.map(function (dayForecast, index) {
             if (index < 5) {
               return (
                 <div className="text-center" key={index}>
-                  <div>{day}</div>
+                  <div>
+                    <DayForecast info={dayForecast.time} />
+                  </div>
                   <img
                     src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
                     alt="icon forecast"
