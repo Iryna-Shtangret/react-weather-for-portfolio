@@ -21,6 +21,7 @@ export default function Weather(props) {
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
       coord: response.data.coordinates,
+      icon: response.data.condition.icon_url,
     });
   }
 
@@ -76,7 +77,8 @@ export default function Weather(props) {
         <div className="row mt-3">
           <div className="col-7 d-flex">
             <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              //src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              src={weatherData.icon}
               alt="icon weather"
             />
             <div className="temperature">{Math.round(weatherData.temp)}</div>

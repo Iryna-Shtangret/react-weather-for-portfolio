@@ -36,7 +36,8 @@ export default function ForecastWeather(props) {
                     <DayForecast info={dayForecast.time} />
                   </div>
                   <img
-                    src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                    //src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                    src={forecast[index].condition.icon_url}
                     alt="icon forecast"
                   />
                   <div>
