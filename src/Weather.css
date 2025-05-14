@@ -37,9 +37,13 @@
   margin-bottom: 0px;
 }
 
+.Weather img {
+  width: 100px;
+  height: auto;
+}
+
 .Weather .temperature {
   font-size: 68px;
-  line-height: 68px;
   color: #575757;
   font-weight: 500;
 }
@@ -47,6 +51,11 @@
 .Weather .unit {
   color: #575757;
   font-weight: 700;
+  padding-top: 20px;
+}
+
+.Weather .descriptionWeather {
+  padding-top: 20px;
 }
 
 .Weather .forecast {

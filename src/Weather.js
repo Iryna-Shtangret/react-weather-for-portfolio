@@ -74,18 +74,15 @@ export default function Weather(props) {
           <li className="text-capitalize">{weatherData.description}</li>
         </ul>
 
-        <div className="row mt-3">
+        <div className="row">
           <div className="col-7 d-flex">
-            <img
-              //src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              src={weatherData.icon}
-              alt="icon weather"
-            />
+            <img src={weatherData.icon} alt={weatherData.description} />
+
             <div className="temperature">{Math.round(weatherData.temp)}</div>
             <div className="unit">°C</div>
           </div>
           <div className="col-5">
-            <ul>
+            <ul className="descriptionWeather">
               <li> Humidity: {weatherData.humidity}%</li>
               <li> Wind: {weatherData.wind} km/h</li>
             </ul>

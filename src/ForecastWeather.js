@@ -27,7 +27,7 @@ export default function ForecastWeather(props) {
   if (loaded) {
     return (
       <div className="ForecastWeather">
-        <div className="forecast d-flex justify-content-between">
+        <div className="forecast d-flex justify-content-between mt-0">
           {forecast.map(function (dayForecast, index) {
             if (index < 5) {
               return (
@@ -36,9 +36,8 @@ export default function ForecastWeather(props) {
                     <DayForecast info={dayForecast.time} />
                   </div>
                   <img
-                    //src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
                     src={forecast[index].condition.icon_url}
-                    alt="icon forecast"
+                    alt={forecast[index].condition.description}
                   />
                   <div>
                     {Math.round(forecast[index].temperature.maximum)}°{" "}
