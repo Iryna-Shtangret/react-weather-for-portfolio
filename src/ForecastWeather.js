@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import DayForecast from "./DayForecast";
+import ForecastWeatherDay from "./ForecastWeatherDay";
 import axios from "axios";
 
 export default function ForecastWeather(props) {
@@ -11,7 +11,6 @@ export default function ForecastWeather(props) {
   }, [props.coordinates]);
 
   function refreshForecast(response) {
-    console.log(response.data.daily);
     setForecast(response.data.daily);
     setLoaded(true);
   }
@@ -32,17 +31,7 @@ export default function ForecastWeather(props) {
             if (index < 5) {
               return (
                 <div className="text-center" key={index}>
-                  <div>
-                    <DayForecast info={dayForecast.time} />
-                  </div>
-                  <img
-                    src={forecast[index].condition.icon_url}
-                    alt={forecast[index].condition.description}
-                  />
-                  <div>
-                    {Math.round(forecast[index].temperature.maximum)}°{" "}
-                    {Math.round(forecast[index].temperature.minimum)}°
-                  </div>
+                  <ForecastWeatherDay infoForecast={forecast[index]} />
                 </div>
               );
             } else {

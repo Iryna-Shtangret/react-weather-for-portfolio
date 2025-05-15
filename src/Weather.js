@@ -1,17 +1,14 @@
 import { useState } from "react";
 import "./Weather.css";
-import axios from "axios";
-import CorrectDate from "./CorrectDate";
+import ToodayWeather from "./ToodayWeather";
 import ForecastWeather from "./ForecastWeather";
+import axios from "axios";
 
 export default function Weather(props) {
-  //debugger;
-
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [newCity, setNewCity] = useState(props.city);
 
   function refreshWeather(response) {
-    console.log(response);
     setWeatherData({
       ready: true,
       temp: response.data.temperature.current,
@@ -65,29 +62,7 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-
-        <h1>{weatherData.city}</h1>
-        <ul>
-          <li>
-            <CorrectDate date={weatherData.date} />
-          </li>
-          <li className="text-capitalize">{weatherData.description}</li>
-        </ul>
-
-        <div className="row">
-          <div className="col-7 d-flex">
-            <img src={weatherData.icon} alt={weatherData.description} />
-
-            <div className="temperature">{Math.round(weatherData.temp)}</div>
-            <div className="unit">°C</div>
-          </div>
-          <div className="col-5">
-            <ul className="descriptionWeather">
-              <li> Humidity: {weatherData.humidity}%</li>
-              <li> Wind: {weatherData.wind} km/h</li>
-            </ul>
-          </div>
-        </div>
+        <ToodayWeather infoWeather={weatherData} />
         <ForecastWeather coordinates={weatherData.coord} />
       </div>
     );

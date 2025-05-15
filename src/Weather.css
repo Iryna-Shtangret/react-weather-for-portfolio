@@ -26,38 +26,6 @@
   border-bottom: 1px solid var(--background-color);
 }
 
-.Weather h1 {
-  font-size: 38px;
-  color: #575757;
-}
-
-.Weather ul {
-  list-style: none;
-  padding-left: 0px;
-  margin-bottom: 0px;
-}
-
-.Weather img {
-  width: 100px;
-  height: auto;
-}
-
-.Weather .temperature {
-  font-size: 68px;
-  color: #575757;
-  font-weight: 500;
-}
-
-.Weather .unit {
-  color: #575757;
-  font-weight: 700;
-  padding-top: 20px;
-}
-
-.Weather .descriptionWeather {
-  padding-top: 20px;
-}
-
 .Weather .forecast {
   margin-top: 20px;
 }

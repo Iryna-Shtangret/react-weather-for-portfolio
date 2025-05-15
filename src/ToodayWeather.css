@@ -1,0 +1,31 @@
+.ToodayWeather h1 {
+  font-size: 38px;
+  color: #575757;
+}
+
+.ToodayWeather ul {
+  list-style: none;
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+
+.ToodayWeather img {
+  width: 100px;
+  height: auto;
+}
+
+.ToodayWeather .temperature {
+  font-size: 68px;
+  color: #575757;
+  font-weight: 500;
+}
+
+.ToodayWeather .unit {
+  color: #575757;
+  font-weight: 700;
+  padding-top: 20px;
+}
+
+.ToodayWeather .descriptionWeather {
+  padding-top: 20px;
+}
