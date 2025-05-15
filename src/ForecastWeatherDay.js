@@ -1,3 +1,5 @@
+import "./ForecastWeatherDay.css";
+
 export default function ForecastWeatherDay(props) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let date = new Date(props.infoForecast.time * 1000);

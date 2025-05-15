@@ -15,7 +15,15 @@ export default function App() {
           >
             Iryna Mrachkovska
           </a>
-          , is open-source on GitHub and hosted on Netfly
+          , is open-source on{" "}
+          <a
+            href="https://github.com/Iryna-Shtangret/react-weather-for-portfolio"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>{" "}
+          and hosted on Netlify
         </footer>
       </div>
     </div>
